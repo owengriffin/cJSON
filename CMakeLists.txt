@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 2.6)
+project(cJSON)
+
+add_subdirectory(include)
+
+set (CJSON_INCLUDE_DIR ${CJSON_SOURCE_DIR}/include)
+set (CJSON_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+include_directories(include)
+add_library(${PROJECT_NAME} STATIC src/cJSON.c)
+
+IF( CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" )
+  SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-fPIC")
+ENDIF( CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" )
+
+install(TARGETS cJSON DESTINATION lib)

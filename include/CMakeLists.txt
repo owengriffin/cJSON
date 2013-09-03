@@ -1,0 +1,1 @@
+install(FILES cJSON.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/cjson)
